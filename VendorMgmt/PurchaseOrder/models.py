@@ -3,6 +3,7 @@ from django.db import models
 from Vendor.models import Vendor
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.db.models import Avg
 
 # Create your models here.
 class purchaseOrder(models.Model):
@@ -18,7 +19,7 @@ class purchaseOrder(models.Model):
         ('canceled', 'Canceled')
     ]
     status = models.CharField(max_length=50, choices=status_choices)
-    quality_rating = models.FloatField(null=True)
+    quality_rating = models.FloatField(null=True, blank=True)
     issue_date = models.DateTimeField()
     acknowledgment_date = models.DateTimeField()
 
@@ -33,3 +34,13 @@ def calculate_on_time_delivery_rate(sender, instance, **kwargs):
             on_time_delivery_rate = (delivered_on_time / total_completed_orders) * 100
             vendor.on_time_delivery_rate = on_time_delivery_rate
             vendor.save()
+
+def save(self, *args, **kwargs):
+    super(purchaseOrder, self).save(*args, **kwargs)
+    self.update_vendor_quality_rating()
+
+def update_vendor_quality_rating(self):
+    completed_orders = purchaseOrder.objects.filter(vendor=self.vendor, quality_rating__isnull=False)
+    avg_quality_rating = completed_orders.aggregate(Avg('quality_rating'))['quality_rating__avg']
+    self.vendor.quality_rating_avg = avg_quality_rating or 0
+    self.vendor.save()

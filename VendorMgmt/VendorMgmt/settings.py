@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Vendor',
     'PurchaseOrder',
     'HistoricalPerformance',
+    'VendorPerformanceEvaluation',
 
 ]
 

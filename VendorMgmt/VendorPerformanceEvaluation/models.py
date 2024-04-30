@@ -6,7 +6,7 @@ class Vendor(models.Model):
     contact_details = models.TextField()
     address = models.TextField()
     vendor_code = models.CharField(max_length=50, unique=True)
-    on_time_delivery_rate = models.FloatField()
+    on_time_delivery_rate = models.FloatField(default=0)
     quality_rating = models.FloatField()
     response_time = models.FloatField()
     fulfilment_rate = models.FloatField()

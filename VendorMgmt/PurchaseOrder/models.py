@@ -56,3 +56,22 @@ def update_vendor_average_response_time(self):
     ).aggregate(models.Avg('response_time'))['response_time__avg']
     self.vendor.average_response_time = response_times.total_seconds() / 60 if response_times else 0
     self.vendor.save()
+
+def update_fulfilment_rate(self):
+    fulfilled_orders_count = self.vendor.purchaseorder_set.filter(status='completed').count()
+    total_orders_count = self.vendor.purchaseorder_set.count()
+
+    if total_orders_count > 0:
+        fulfilment_rate = (fulfilled_orders_count / total_orders_count) * 100
+    else:
+        fulfilment_rate = 0
+
+    self.vendor.fulfilment_rate = fulfilment_rate
+    self.vendor.save()
+
+def save(self, *args, **kwargs):
+    is_new = not self.pk  # Check if the instance is being created or updated
+    super(purchaseOrder, self).save(*args, **kwargs)
+
+    if not is_new:
+        self.update_fulfilment_rate()

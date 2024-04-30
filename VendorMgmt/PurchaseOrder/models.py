@@ -39,8 +39,20 @@ def save(self, *args, **kwargs):
     super(purchaseOrder, self).save(*args, **kwargs)
     self.update_vendor_quality_rating()
 
+def save(self, *args, **kwargs):
+    super(purchaseOrder, self).save(*args, **kwargs)
+    self.update_vendor_average_response_time()
+
 def update_vendor_quality_rating(self):
     completed_orders = purchaseOrder.objects.filter(vendor=self.vendor, quality_rating__isnull=False)
     avg_quality_rating = completed_orders.aggregate(Avg('quality_rating'))['quality_rating__avg']
     self.vendor.quality_rating_avg = avg_quality_rating or 0
+    self.vendor.save()
+
+def update_vendor_average_response_time(self):
+    all_orders = purchaseOrder.objects.filter(vendor=self.vendor, acknowledgment_date__isnull=False)
+    response_times = all_orders.annotate(
+    response_time=models.F('acknowledgment_date') - models.F('issue_date')
+    ).aggregate(models.Avg('response_time'))['response_time__avg']
+    self.vendor.average_response_time = response_times.total_seconds() / 60 if response_times else 0
     self.vendor.save()

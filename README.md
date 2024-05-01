@@ -27,3 +27,7 @@ README.md: Project documentation
   6. python manage.py runserver
 
 **To access django admin panel**
+To access the database (http://127.0.0.1:8000/admin/) 
+
+**To test API endpoints:**
+Used Curl to test the API endpoints

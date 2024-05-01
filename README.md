@@ -9,14 +9,14 @@ pip install django
 pip install djangorestframework
 
 **Project Structure**
-VendorMgmt: Django project directory & Django project folder
-Vendor:Django app containing API views, serializers and models for Vendor
-PurchaseOrder: Django app containing API views, serializers and models for PurchaseOrder
-HistoricalPerformance: Django app containing API views, serializers and models for HistoricalPerformance
-VendorPerformanceEvaluation: Django app containing API views, serializers and models for VendorPerformanceEvaluation
-manage.py: Django management script
-requirements.txt: Project dependencies
-README.md: Project documentation
+* VendorMgmt: Django project directory & Django project folder
+* Vendor:Django app containing API views, serializers and models for Vendor
+* PurchaseOrder: Django app containing API views, serializers and models for PurchaseOrder
+* HistoricalPerformance: Django app containing API views, serializers and models for HistoricalPerformance
+* VendorPerformanceEvaluation: Django app containing API views, serializers and models for VendorPerformanceEvaluation
+* manage.py: Django management script
+* requirements.txt: Project dependencies
+* README.md: Project documentation
 
 **Installation**
   1. Clone the repository (git clone https://github.com/snownisha/Vendor-Management-System-with-Performance-Metrics.git)

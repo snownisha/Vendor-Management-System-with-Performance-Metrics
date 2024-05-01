@@ -31,3 +31,8 @@ To access the database (http://127.0.0.1:8000/admin/)
 
 **To test API endpoints:**
 Used Curl to test the API endpoints
+
+**Eg:**
+curl http://localhost:8000/api/vendors/
+curl -X GET http://localhost:8000/api/purchase_orders/
+curl -X POST -d "username=your_superuser_username&password=your_superuser_password" http://localhost:8000/api-token-auth/

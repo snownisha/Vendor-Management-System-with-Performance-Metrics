@@ -1,3 +1,4 @@
+**Vendor management system with performace matrix**
 Vendor management system with performace matrix using Django and DjangoREST Framework.This system will handle vendor profiles, track purchase orders and 
 calculate vendor performance metrics.
 

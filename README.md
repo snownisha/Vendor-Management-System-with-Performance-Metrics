@@ -1,13 +1,14 @@
-Vendor management system with performace matrix
+**Vendor management system with performace matrix**
 
 Vendor management system with performace matrix was created using Django and DjangoREST Framework.This system will handle vendor profiles, track purchase orders and calculate vendor performance metrics.
 
-Prerequisites Python (Version 3), Django, Django REST framework
+**Prerequisites** Python (Version 3), Django, Django REST framework
 
-Dependencies pip install django pip install djangorestframework
+**Dependencies** 
+1. pip install django
+2. pip install djangorestframework
 
-Project Structure
-
+**Project Structure**
 VendorMgmt: Django project directory & Django project folder
 Vendor:Django app containing API views, serializers and models for Vendor
 PurchaseOrder: Django app containing API views, serializers and models for PurchaseOrder

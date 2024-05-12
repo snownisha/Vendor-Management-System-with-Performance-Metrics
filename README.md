@@ -18,13 +18,13 @@ requirements.txt: Project dependencies
 README.md: Project documentation
 Installation
 
-Clone the repository (git clone https://github.com/snownisha/Vendor-Management-System-with-Performance-Metrics.git)
-cd VendorMgmt
-python manage.py makemigrations
-python manage.py migrate
-To create super user (python manage.py createsuperuser)
-python manage.py runserver
-To access django admin panel To access the database (http://127.0.0.1:8000/admin/)
+1. Clone the repository (git clone https://github.com/snownisha/Vendor-Management-System-with-Performance-Metrics.git)
+2. cd VendorMgmt
+3. python manage.py makemigrations
+4. python manage.py migrate
+5. To create super user (python manage.py createsuperuser)
+6. python manage.py runserver
+7. To access django admin panel To access the database (http://127.0.0.1:8000/admin/)
 
 To test API endpoints: Used Curl to test the API endpoints
 
